@@ -29,121 +29,121 @@ Feel free to email jobs@surefoot.me with any questions.
 ```
 /* HTML file */
 ```
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sure Foot Application</title>
-    <link rel="stylesheet" type="text/css" href="./style.css">
-    <script src="https://kit.fontawesome.com/5901743741.js"></script>  
-</head>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sure Foot Application</title>
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <script src="https://kit.fontawesome.com/5901743741.js"></script>  
+    </head>
 
-<body>
-    <div class="header">
-        <h3 class="header-title title"> You have arrived, welcome! </h3>
-        <p class="header-content">Thanks for your interest in our available engineer role! If you have any questions, 
-            please refer to the original application page or email us - hello@surefoot.me.
-        </p>
-    </div>
-    <div class="container">
-        <div class="schedule-call-container">
-            <h4 class="call-title title">schedule a call</h4>
-            <p class="call-content">once scheduled you will receive a calendar invitation and follow-up email confirming 
-                call details
+    <body>
+        <div class="header">
+            <h3 class="header-title title"> You have arrived, welcome! </h3>
+            <p class="header-content">Thanks for your interest in our available engineer role! If you have any questions, 
+                please refer to the original application page or email us - hello@surefoot.me.
             </p>
-            <button class="call-button button"type="submit">schedule your call now</button>
         </div>
-        <div class="form-container">
-            <h4 class="form-title title">or shoot us an email</h4>
-            <form class="form">
-                <div class="form-control">
-                    <p class="error-message">Error</p>
-                    <input type="text" id="name" placeholder="first and last name">
-                </div>
-                <div class="form-control">
-                    <p class="error-message">Error</p>
-                    <input type="text" id="email" placeholder="email address">
-                </div>
-                <div class="form-control">
-                    <p class="error-message">Error</p>
-                    <textarea id="message" placeholder="your message"></textarea>
-                </div>
-                <button class="form-submit button" type="submit">send</button>
-            </form>
+        <div class="container">
+            <div class="schedule-call-container">
+                <h4 class="call-title title">schedule a call</h4>
+                <p class="call-content">once scheduled you will receive a calendar invitation and follow-up email confirming 
+                    call details
+                </p>
+                <button class="call-button button"type="submit">schedule your call now</button>
+            </div>
+            <div class="form-container">
+                <h4 class="form-title title">or shoot us an email</h4>
+                <form class="form">
+                    <div class="form-control">
+                        <p class="error-message">Error</p>
+                        <input type="text" id="name" placeholder="first and last name">
+                    </div>
+                    <div class="form-control">
+                        <p class="error-message">Error</p>
+                        <input type="text" id="email" placeholder="email address">
+                    </div>
+                    <div class="form-control">
+                        <p class="error-message">Error</p>
+                        <textarea id="message" placeholder="your message"></textarea>
+                    </div>
+                    <button class="form-submit button" type="submit">send</button>
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="modal-bg">
-        <div class="modal">
-            <i class="fas fa-times close"></i>
-            <h3>Whoops! Looks like we already received your application. We, appreaciate your
-                patience while your application is under review.
-            </h3>
-            <img src=https://media.giphy.com/media/XbxZ41fWLeRECPsGIJ/giphy.gif>
+        <div class="modal-bg">
+            <div class="modal">
+                <i class="fas fa-times close"></i>
+                <h3>Whoops! Looks like we already received your application. We, appreaciate your
+                    patience while your application is under review.
+                </h3>
+                <img src=https://media.giphy.com/media/XbxZ41fWLeRECPsGIJ/giphy.gif>
+            </div>
         </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./app.js"></script>
-</body>
-</html>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="./app.js"></script>
+    </body>
+    </html>
 
 ```
 /* Form Validation Code */
 ```
-$(document).ready(function() {   
-    let form = document.querySelector('.form');
-    let name = document.querySelector('#name');
-    let email = document.querySelector('#email');
-    let message = document.querySelector('#message');
-    
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        validate();
-    })
+    $(document).ready(function() {   
+        let form = document.querySelector('.form');
+        let name = document.querySelector('#name');
+        let email = document.querySelector('#email');
+        let message = document.querySelector('#message');
+        
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            validate();
+        })
 
-    function validate() {
-        let checkName = name.value.trim();
-        let checkEmail = email.value.trim();
-        let checkMessage = message.value.trim(); 
-        if(!checkName) {
-            let formControl = name.parentElement;
-            let errorMessage = formControl.querySelector('.error-message');
-            errorMessage.classList.add('show-error');
-            errorMessage.textContent = "enter a valid name";
-            return false;
-        }
+        function validate() {
+            let checkName = name.value.trim();
+            let checkEmail = email.value.trim();
+            let checkMessage = message.value.trim(); 
+            if(!checkName) {
+                let formControl = name.parentElement;
+                let errorMessage = formControl.querySelector('.error-message');
+                errorMessage.classList.add('show-error');
+                errorMessage.textContent = "enter a valid name";
+                return false;
+            }
 
-        if(!validateEmail(checkEmail)) {
-            let formControl = email.parentElement;
-            let errorMessage = formControl.querySelector('.error-message');
-            errorMessage.classList.add('show-error');
-            errorMessage.textContent = "enter a valid email";
-            return false;
-        }
+            if(!validateEmail(checkEmail)) {
+                let formControl = email.parentElement;
+                let errorMessage = formControl.querySelector('.error-message');
+                errorMessage.classList.add('show-error');
+                errorMessage.textContent = "enter a valid email";
+                return false;
+            }
 
-        if(!checkMessage) {
-            let formControl = message.parentElement;
-            let errorMessage = formControl.querySelector('.error-message');
-            errorMessage.classList.add('show-error');
-            errorMessage.textContent = "please enter a message";
-            return false;
-        }
+            if(!checkMessage) {
+                let formControl = message.parentElement;
+                let errorMessage = formControl.querySelector('.error-message');
+                errorMessage.classList.add('show-error');
+                errorMessage.textContent = "please enter a message";
+                return false;
+            }
 
-        if(checkMessage.length > 150) {
-            let formControl = message.parentElement;
-            let errorMessage = formControl.querySelector('.error-message');
-            errorMessage.classList.add('show-error');
-            errorMessage.textContent = "please keep the message less than 150 characters";
-            return false;
-        }
+            if(checkMessage.length > 150) {
+                let formControl = message.parentElement;
+                let errorMessage = formControl.querySelector('.error-message');
+                errorMessage.classList.add('show-error');
+                errorMessage.textContent = "please keep the message less than 150 characters";
+                return false;
+            }
 
-        function validateEmail(email) {
-            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(String(email).toLowerCase());
+            function validateEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+            return true;
         }
-        return true;
-    }
-});
+    });
 
 ```
 /* Code Break-Down */
@@ -157,7 +157,7 @@ For Example, If the user does not enter the correct data or leaves a field empty
    
 * In the validate function, we check for any missing fields, incorrect email and message length which should be less than 150 characters. 
 
-*If all the above conditions are passed, the function returns a value of 'true' otherwise an error message is displayed and the function returns 'false'.
+* If all the above conditions are passed, the function returns a value of 'true' otherwise an error message is displayed and the function returns 'false'.
 
 ---
 
@@ -182,126 +182,126 @@ For Example, If the user does not enter the correct data or leaves a field empty
 ```
 /* Form Restyling Code */
 ```
-@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
-* {
-    box-sizing: border-box;
-}
+    * {
+        box-sizing: border-box;
+    }
 
-body {
-   font-family: 'Cabin', sans-serif;
-   margin: 5vh;
-}
+    body {
+    font-family: 'Cabin', sans-serif;
+    margin: 5vh;
+    }
 
-.title {
-    color: #522fae;
-    font-size: 2em;
-    margin-bottom: 0;
-}
+    .title {
+        color: #522fae;
+        font-size: 2em;
+        margin-bottom: 0;
+    }
 
-.button {
-    color: #ffffff;
-    background-color: #522fae;
-    border-radius: 3px;
-    border: none;
-    font-size: 1.1em;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-}
+    .button {
+        color: #ffffff;
+        background-color: #522fae;
+        border-radius: 3px;
+        border: none;
+        font-size: 1.1em;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+    }
 
-.button:hover {
-    background-color: orange
-}
+    .button:hover {
+        background-color: orange
+    }
 
-.button:focus {
-    outline: none;
-}
+    .button:focus {
+        outline: none;
+    }
 
-/* Header */
-.header-content {
-    font-size: 1.1em;
-    width: 60%;
-    font-family: 'Open Sans', sans-serif;
-}
+    /* Header */
+    .header-content {
+        font-size: 1.1em;
+        width: 60%;
+        font-family: 'Open Sans', sans-serif;
+    }
 
-.container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 
-/* Call */
-.call-content {
-    font-size: 0.95em;
-    font-family: 'Open Sans', sans-serif;
-    width: 80%;
-}
+    /* Call */
+    .call-content {
+        font-size: 0.95em;
+        font-family: 'Open Sans', sans-serif;
+        width: 80%;
+    }
 
-.call-button {
-    padding: 1.8vh 6vh;
+    .call-button {
+        padding: 1.8vh 6vh;
 
-}
+    }
 
-/* Form */
-.form {
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-}
-.form-title {
-    margin-bottom: 2vh;
-}
+    /* Form */
+    .form {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+    }
+    .form-title {
+        margin-bottom: 2vh;
+    }
 
-.form-control {
-    position: relative;
-    width: 100%;
-}
+    .form-control {
+        position: relative;
+        width: 100%;
+    }
 
-.form-control>input, .form-control>textarea {
-    margin-top: 3vh;
-    border-radius: 3px;
-    border: none;
-    background-color: #efefef;
-    color: #5a5a5a;
-    font-size: 0.9em;
-}
+    .form-control>input, .form-control>textarea {
+        margin-top: 3vh;
+        border-radius: 3px;
+        border: none;
+        background-color: #efefef;
+        color: #5a5a5a;
+        font-size: 0.9em;
+    }
 
-.form-control>input:focus, .form-control>textarea:focus {
-    outline: none;
-}
+    .form-control>input:focus, .form-control>textarea:focus {
+        outline: none;
+    }
 
-.form-control>input{
-    padding: 1.5vh;
-    width: 28vw;
-    margin-top: 3vh;
-}
+    .form-control>input{
+        padding: 1.5vh;
+        width: 28vw;
+        margin-top: 3vh;
+    }
 
-.form-control>textarea {
-    padding: 1.5vh;
-    width: 28vw ;
-    padding-bottom: 12vh;
-    font-size: 1.1em;
-}
+    .form-control>textarea {
+        padding: 1.5vh;
+        width: 28vw ;
+        padding-bottom: 12vh;
+        font-size: 1.1em;
+    }
 
-.form-submit {
-    margin-top: 3vh;
-    padding: 1.8vh;
-    align-self: flex-end;
-}
+    .form-submit {
+        margin-top: 3vh;
+        padding: 1.8vh;
+        align-self: flex-end;
+    }
 
-.error-message {
-    margin-bottom: 0;
-    visibility: hidden;
-    position: absolute;
-    top: -2vh;
-    left: 0;
-    color: red;
-}
+    .error-message {
+        margin-bottom: 0;
+        visibility: hidden;
+        position: absolute;
+        top: -2vh;
+        left: 0;
+        color: red;
+    }
 
-.show-error {
-    visibility: visible;
-}
+    .show-error {
+        visibility: visible;
+    }
 
 ```
 /* Code Break-Down */
@@ -344,135 +344,134 @@ body {
 ```
 /* CSS */
 ```
+    /* Modal */
+    .modal-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(248,246,246,0.5);
+        display: flex;
+        justify-content: center;
+        visibility: hidden;
+        opacity: 0;
+    }
+    
+    .bg-active {
+        visibility: visible;
+        opacity: 1;
+    }
+    
+    .modal {
+        background-color: #efefef;
+        width: 500px;
+        height: 500px;
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 5px;
+        position: relative;
+    }
+    
+    .modal > h3 {
+        align-self: center;
+        margin: 5rem 3rem 2rem;
+        color: #522fae;
+    }
 
-/* Modal */
-.modal-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(248,246,246,0.5);
-    display: flex;
-    justify-content: center;
-    visibility: hidden;
-    opacity: 0;
-}
- 
-.bg-active {
-    visibility: visible;
-    opacity: 1;
-}
- 
-.modal {
-    background-color: #efefef;
-    width: 500px;
-    height: 500px;
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    position: relative;
-}
- 
-.modal > h3 {
-    align-self: center;
-    margin: 5rem 3rem 2rem;
-    color: #522fae;
-}
+    .modal > img {
+        width: 250px;
+        height: 250px;
+        align-self: center;
+    }
 
-.modal > img {
-    width: 250px;
-    height: 250px;
-    align-self: center;
-}
-
-.close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: #522fae;
-    font-size: 2em;
-    cursor: pointer;
-}
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: #522fae;
+        font-size: 2em;
+        cursor: pointer;
+    }
 
 ```
 /* Cookie Monster Code */
 ```
-$(document).ready(function() {   
-    let form = document.querySelector('.form');
-    let name = document.querySelector('#name');
-    let email = document.querySelector('#email');
-    let message = document.querySelector('#message');
-    let modalBg = document.querySelector('.modal-bg');
-    let closeBtn = document.querySelector('.close');
+    $(document).ready(function() {   
+        let form = document.querySelector('.form');
+        let name = document.querySelector('#name');
+        let email = document.querySelector('#email');
+        let message = document.querySelector('#message');
+        let modalBg = document.querySelector('.modal-bg');
+        let closeBtn = document.querySelector('.close');
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        let emailValue = email.value.trim();
-        if(validate()) {
-           preventReSubmission(emailValue);
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            let emailValue = email.value.trim();
+            if(validate()) {
+            preventReSubmission(emailValue);
+            }
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+
+        function validate() {
+            let checkName = name.value.trim();
+            let checkEmail = email.value.trim();
+            let checkMessage = message.value.trim(); 
+            if(!checkName) {
+                let formControl = name.parentElement;
+                let errorMessage = formControl.querySelector('.error-message');
+                errorMessage.classList.add('show-error');
+                errorMessage.textContent = "enter a valid name";
+                return false;
+            }
+
+            if(!validateEmail(checkEmail)) {
+                let formControl = email.parentElement;
+                let errorMessage = formControl.querySelector('.error-message');
+                errorMessage.classList.add('show-error');
+                errorMessage.textContent = "enter a valid email";
+                return false;
+            }
+
+            if(!checkMessage) {
+                let formControl = message.parentElement;
+                let errorMessage = formControl.querySelector('.error-message');
+                errorMessage.classList.add('show-error');
+                errorMessage.textContent = "please enter a message";
+                return false;
+            }
+
+            if(checkMessage.length > 150) {
+                let formControl = message.parentElement;
+                let errorMessage = formControl.querySelector('.error-message');
+                errorMessage.classList.add('show-error');
+                errorMessage.textContent = "please keep the message less than 150 characters";
+                return false;
+            }
+
+            function validateEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+            return true;
+        }
+        
+        function preventReSubmission(email) {
+            if(!localStorage.getItem(email)) {
+                localStorage.setItem(email, 1);
+            }
+            else {
+                modalBg.classList.add('bg-active');
+            }
+        }
+
+        function closeModal() {
+            modalBg.classList.remove('bg-active');
         }
     });
-
-    closeBtn.addEventListener('click', closeModal);
-
-    function validate() {
-        let checkName = name.value.trim();
-        let checkEmail = email.value.trim();
-        let checkMessage = message.value.trim(); 
-        if(!checkName) {
-            let formControl = name.parentElement;
-            let errorMessage = formControl.querySelector('.error-message');
-            errorMessage.classList.add('show-error');
-            errorMessage.textContent = "enter a valid name";
-            return false;
-        }
-
-        if(!validateEmail(checkEmail)) {
-            let formControl = email.parentElement;
-            let errorMessage = formControl.querySelector('.error-message');
-            errorMessage.classList.add('show-error');
-            errorMessage.textContent = "enter a valid email";
-            return false;
-        }
-
-        if(!checkMessage) {
-            let formControl = message.parentElement;
-            let errorMessage = formControl.querySelector('.error-message');
-            errorMessage.classList.add('show-error');
-            errorMessage.textContent = "please enter a message";
-            return false;
-        }
-
-        if(checkMessage.length > 150) {
-            let formControl = message.parentElement;
-            let errorMessage = formControl.querySelector('.error-message');
-            errorMessage.classList.add('show-error');
-            errorMessage.textContent = "please keep the message less than 150 characters";
-            return false;
-        }
-
-        function validateEmail(email) {
-            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(String(email).toLowerCase());
-        }
-        return true;
-    }
-    
-    function preventReSubmission(email) {
-        if(!localStorage.getItem(email)) {
-            localStorage.setItem(email, 1);
-        }
-        else {
-            modalBg.classList.add('bg-active');
-        }
-    }
-
-    function closeModal() {
-        modalBg.classList.remove('bg-active');
-    }
-});
 
 ```
 /* Code Break-Down */
